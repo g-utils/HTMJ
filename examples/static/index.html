@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMJ Example</title>
+    <script src="/static/htmj.js" defer></script>
+  </head>
+
+  <body>
+    <input id="input1" type="text" value="Input 1" />
+    <input id="input2" type="text" value="Input 2" />
+
+    <!-- GET Request Example -->
+    <template
+      hx-endpoint="/api/error"
+      hx-error="handleError"
+      hx-event="onclick"
+      hx-event-target="#errorBtn"
+    >
+      <div>${error}</div>
+    </template>
+    <button id="errorBtn">Trigger Error</button>
+
+    <!-- POST Request Example -->
+    <template
+      hx-endpoint="/api/data"
+      hx-data-sources="#input1, #input2"
+      hx-method="POST"
+      hx-event="onclick"
+      hx-event-target="#loadBtn"
+      hx-target="#loadTarget"
+    >
+      <div class="row">
+        <span>${row1.name}</span>
+        <div data-nested-array="row2">
+          <p>${item}</p>
+        </div>
+      </div>
+    </template>
+    <button id="loadBtn">Load Data</button>
+    <div id="loadTarget"></div>
+
+    <script>
+      function handleError(error) {
+        alert("Error: " + error);
+      }
+    </script>
+  </body>
+</html>
