@@ -67,6 +67,7 @@ class HTMJ {
       const options = {
         method,
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body:
           method !== "GET" && dataToSend
             ? JSON.stringify(dataToSend)
