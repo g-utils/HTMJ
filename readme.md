@@ -96,7 +96,7 @@ Used to denote elements that should be populated with nested array data.
 
 ```html
 <div data-nested-array="nestedData">
-  <p>${nestedData.item}</p>
+  <p>${item}</p>
 </div>
 ```
 
