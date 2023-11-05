@@ -1,5 +1,7 @@
 # HTMJ Framework Documentation
 
+HTMX but JSON
+
 ## Overview
 
 The HTMJ framework is a lightweight JavaScript library designed to simplify the process of fetching data from an API endpoint and rendering it on a webpage using HTML templates.
