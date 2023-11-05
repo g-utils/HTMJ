@@ -1,5 +1,7 @@
 # HTMJ Framework Documentation
 
+HTMX but JSON
+
 ## Overview
 
 The HTMJ framework is a lightweight JavaScript library designed to simplify the process of fetching data from an API endpoint and rendering it on a webpage using HTML templates.
@@ -94,7 +96,7 @@ Used to denote elements that should be populated with nested array data.
 
 ```html
 <div data-nested-array="nestedData">
-  <p>${nestedData.item}</p>
+  <p>${item}</p>
 </div>
 ```
 
