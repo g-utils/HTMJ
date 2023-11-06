@@ -63,18 +63,28 @@ class HTMJ {
 
   async fetchData(endpoint, method, dataSources) {
     try {
+      // Prepare data for sending
       const dataToSend = this.prepareData(dataSources);
+
+      // Construct a query string if method is GET and there is data to send
+      const queryString =
+        method === "GET" && dataToSend
+          ? `?${new URLSearchParams(dataToSend).toString()}`
+          : "";
+      const url = `${endpoint}${queryString}`;
+
       const options = {
         method,
         headers: { "Content-Type": "application/json" },
         credentials: "same-origin",
-        body:
-          method !== "GET" && dataToSend
-            ? JSON.stringify(dataToSend)
-            : undefined,
       };
 
-      const response = await fetch(endpoint, options);
+      // Include body only for non-GET methods
+      if (method !== "GET" && dataToSend) {
+        options.body = JSON.stringify(dataToSend);
+      }
+
+      const response = await fetch(url, options);
       const data = await response.json();
 
       if (!response.ok) {
@@ -143,6 +153,20 @@ class HTMJ {
   }
 
   replaceTextContent(childNode, data) {
+    // Process the attributes of the childNode if it's an element
+    if (childNode.nodeType === Node.ELEMENT_NODE) {
+      Array.from(childNode.attributes).forEach((attr) => {
+        if (attr.value.includes("${")) {
+          // Check if the attribute value contains a template literal
+          attr.value = attr.value.replace(
+            /\$\{([^}]+)\}/g,
+            (_, key) => this.deepAccess(data, key) || "",
+          );
+        }
+      });
+    }
+
+    // Process the text nodes as before
     Array.from(childNode.childNodes).forEach((textNode) => {
       if (textNode.nodeType === Node.TEXT_NODE) {
         textNode.nodeValue = textNode.nodeValue.replace(
