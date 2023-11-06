@@ -56,10 +56,10 @@ Specifies the HTTP method to use when fetching data. If omitted, it defaults to 
 
 ### `hx-event`
 
-Specifies the event that triggers the data fetch. Defaults to `onload`. Possible values are `onload`, `onclick`, `onsubmit`, etc.
+Specifies the event that triggers the data fetch. Defaults to `onload`. Possible values are `onload`, `onclick`, `onsubmit`, etc. You can define multiple events to listen by seperating them by commas.
 
 ```html
-<template hx-endpoint="/api/data" hx-event="onclick"></template>
+<template hx-endpoint="/api/data" hx-event="onchange, onload" hx-event-target="#select"></template>
 ```
 
 ### `hx-error`
