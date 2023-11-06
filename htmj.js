@@ -56,9 +56,19 @@ class HTMJ {
   }
 
   bindEvent(event, eventTarget, handler) {
-    event === "onload"
-      ? handler()
-      : eventTarget.addEventListener(event.slice(2), handler);
+    // event === "onload"
+    //   ? handler()
+    //   : eventTarget.addEventListener(event.slice(2), handler);
+
+    // Split the event by , to allow multiple events
+    const events = event.split(",");
+    events.forEach((event) => {
+      // Remove the spaces from the event name
+      event = event.trim();
+      event === "onload"
+        ? handler()
+        : eventTarget.addEventListener(event.slice(2), handler);
+    });
   }
 
   async fetchData(endpoint, method, dataSources) {
