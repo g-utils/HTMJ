@@ -2,6 +2,9 @@
 
 HTMX but JSON
 
+> [!WARNING]  
+> Don't actually use this! I am not a JavaScript programmer and this code cannot be expected to run reliably.
+
 ## Overview
 
 The HTMJ framework is a lightweight JavaScript library designed to simplify the process of fetching data from an API endpoint and rendering it on a webpage using HTML templates.
