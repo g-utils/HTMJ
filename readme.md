@@ -9,7 +9,12 @@ HTMX but JSON
 
 The HTMJ framework is a lightweight JavaScript library designed to simplify the process of fetching data from an API endpoint and rendering it on a webpage using HTML templates.
 
+<details>
+
+<summary>
+
 ## Getting Started
+</summary>
 
 ### Basic HTML Template
 
@@ -130,7 +135,7 @@ The following template will render the data correctly:
   </div>
 </template>
 ```
+</details>
 
-## Conclusion
-
-The HTMJ framework is a powerful yet simple library that enables developers to dynamically fetch and render data on web pages using HTML templates and custom attributes.
+## Projects using HTMJ
+- [acheong08/nameserver](https://github.com/acheong08/nameserver) - A dead simple server+UI to manage SSL and DNS (WIP).
